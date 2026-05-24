@@ -1,0 +1,1508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weekly Chakra Practice Guide</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Lora:wght@400;500;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --color-muladhara: #DC143C;
+            --color-svadhisthana: #FF8C00;
+            --color-manipura: #E0A100;
+            --color-anahata: #00AA44;
+            --color-vishuddha: #4169E1;
+            --color-ajna: #4B0082;
+            --color-sahasrara: #9D7CBF;
+
+            --bg-primary: #faf8f5;
+            --bg-secondary: #f5f2ed;
+            --text-primary: #1a1a1a;
+            --text-secondary: #4a4a4a;
+            --text-tertiary: #6b6b6b;
+            --accent-warm: #c9a878;
+            --accent-cool: #7ba3c0;
+
+            --spacing-unit: 8px;
+        }
+
+        /* Per-chakra colour tokens: --c = solid accent, --tint = rgb triple for fills */
+        .chakra-muladhara    { --c: #DC143C; --tint: 220, 20, 60; }
+        .chakra-svadhisthana { --c: #FF8C00; --tint: 255, 140, 0; }
+        .chakra-manipura     { --c: #E0A100; --tint: 255, 215, 0; }
+        .chakra-anahata      { --c: #00AA44; --tint: 0, 170, 68; }
+        .chakra-vishuddha    { --c: #4169E1; --tint: 65, 105, 225; }
+        .chakra-ajna         { --c: #4B0082; --tint: 75, 0, 130; }
+        .chakra-sahasrara    { --c: #9D7CBF; --tint: 157, 124, 191; }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.8;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        }
+
+        /* ========== HEADER ========== */
+        .header {
+            padding: calc(var(--spacing-unit) * 12) calc(var(--spacing-unit) * 6);
+            text-align: center;
+            background: linear-gradient(135deg, #ffffff 0%, #f9f7f4 100%);
+            border-bottom: 1px solid #ede9e4;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(201, 168, 120, 0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: var(--spacing-unit);
+            letter-spacing: -1px;
+            line-height: 1.1;
+        }
+
+        .header p {
+            font-family: 'Lora', serif;
+            font-size: 1rem;
+            color: var(--text-tertiary);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-weight: 400;
+            margin-bottom: 0;
+        }
+
+        /* ========== LANDING ========== */
+        .landing-body {
+            padding: calc(var(--spacing-unit) * 9) calc(var(--spacing-unit) * 8) calc(var(--spacing-unit) * 12);
+        }
+
+        .landing__intro {
+            text-align: center;
+            font-family: 'Lora', serif;
+            font-style: italic;
+            font-size: 1.05rem;
+            color: var(--text-tertiary);
+            max-width: 460px;
+            margin: 0 auto calc(var(--spacing-unit) * 7);
+            line-height: 1.7;
+        }
+
+        /* ========== SPINE ========== */
+        .spine {
+            --disc: 56px;
+            position: relative;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 8px 0;
+        }
+
+        .spine::before {
+            content: '';
+            position: absolute;
+            z-index: 0;
+            left: calc(var(--disc) / 2 - 2px);
+            top: 42px;
+            bottom: 42px;
+            width: 4px;
+            background: linear-gradient(180deg,
+                #9D7CBF 0%, #4B0082 17%, #4169E1 34%, #00AA44 50%,
+                #E0A100 66%, #FF8C00 83%, #DC143C 100%);
+            border-radius: 2px;
+        }
+
+        .node {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            margin-bottom: 14px;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .node:last-child {
+            margin-bottom: 0;
+        }
+
+        .node__disc {
+            width: var(--disc);
+            height: var(--disc);
+            border-radius: 50%;
+            flex-shrink: 0;
+            background: var(--c);
+            box-shadow: 0 3px 12px rgba(var(--tint), 0.45),
+                        inset 0 0 0 1.5px rgba(255, 255, 255, 0.55);
+            transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .node__body {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 16px 22px;
+            background: #fff;
+            border: 1px solid #efeae3;
+            border-radius: 16px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+            transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+                        box-shadow 0.25s ease,
+                        border-color 0.25s ease;
+        }
+
+        .node__text {
+            flex: 1;
+        }
+
+        .node__name {
+            display: block;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            line-height: 1.2;
+            letter-spacing: -0.3px;
+            color: var(--text-primary);
+        }
+
+        .node__meta {
+            display: block;
+            font-family: 'Lora', serif;
+            font-size: 0.85rem;
+            color: var(--text-tertiary);
+            margin-top: 3px;
+        }
+
+        .node__arrow {
+            font-size: 1.25rem;
+            color: var(--c);
+            opacity: 0;
+            transform: translateX(-6px);
+            transition: opacity 0.25s ease, transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .node:hover .node__body {
+            transform: translateX(4px);
+            box-shadow: 0 10px 28px rgba(0, 0, 0, 0.09);
+            border-color: var(--c);
+        }
+
+        .node:hover .node__disc {
+            transform: scale(1.06);
+        }
+
+        .node:hover .node__arrow {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .node:focus-visible .node__body {
+            outline: 2px solid var(--c);
+            outline-offset: 3px;
+        }
+
+        /* ========== DETAIL VIEW ========== */
+        .detail {
+            display: none;
+            padding: 0 calc(var(--spacing-unit) * 8) calc(var(--spacing-unit) * 10);
+        }
+
+        .detail-bar {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 14px calc(var(--spacing-unit) * 8);
+            margin: 0 calc(var(--spacing-unit) * -8) calc(var(--spacing-unit) * 5);
+            background: rgba(255, 255, 255, 0.92);
+            -webkit-backdrop-filter: blur(8px);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid #ede9e4;
+        }
+
+        .back-link {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            padding: 6px 2px;
+            transition: color 0.25s ease, gap 0.25s ease;
+        }
+
+        .back-link:hover {
+            color: var(--c);
+            gap: 11px;
+        }
+
+        .back-link:focus-visible {
+            outline: 2px solid var(--c);
+            outline-offset: 3px;
+            border-radius: 4px;
+        }
+
+        .bar-wordmark {
+            font-family: 'Playfair Display', serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--text-tertiary);
+        }
+
+        .day-panel {
+            padding: calc(var(--spacing-unit) * 5) calc(var(--spacing-unit) * 4);
+            border-radius: 16px;
+            border-left: 4px solid var(--c);
+            background: linear-gradient(135deg,
+                rgba(var(--tint), 0.09) 0%, rgba(var(--tint), 0.04) 100%);
+        }
+
+        .chakra-mandala {
+            text-align: center;
+            margin-bottom: calc(var(--spacing-unit) * 2);
+            opacity: 0.7;
+        }
+
+        /* ========== DAY HEADER ========== */
+        .day-header {
+            display: flex;
+            align-items: flex-start;
+            gap: calc(var(--spacing-unit) * 3);
+            margin-bottom: calc(var(--spacing-unit) * 3);
+        }
+
+        .color-dot {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            flex-shrink: 0;
+            margin-top: 6px;
+            background: var(--c);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12),
+                        inset 0 0 0 1px rgba(255, 255, 255, 0.45);
+        }
+
+        .day-info {
+            flex: 1;
+            padding-top: 4px;
+        }
+
+        .day-info h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+            letter-spacing: -0.5px;
+        }
+
+        .day-info .chakra-subtitle {
+            font-family: 'Lora', serif;
+            font-size: 0.9rem;
+            color: var(--text-tertiary);
+            font-style: italic;
+            margin-bottom: 12px;
+        }
+
+        .day-info p {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .planet {
+            color: var(--text-secondary);
+            font-style: italic;
+            display: inline-block;
+            padding: 6px 12px;
+            background: rgba(0, 0, 0, 0.02);
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            border-radius: 8px;
+            margin-top: 6px;
+            font-size: 0.9rem;
+        }
+
+        /* ========== SECTION TITLES ========== */
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin: calc(var(--spacing-unit) * 4) 0 calc(var(--spacing-unit) * 2) 0;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            position: relative;
+            padding-left: 16px;
+        }
+
+        .section-title::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 6px;
+            height: 6px;
+            background: var(--c);
+            border-radius: 50%;
+            box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.05);
+        }
+
+        /* ========== MUDRA CARD ========== */
+        .mudra {
+            margin-bottom: calc(var(--spacing-unit) * 3);
+            padding: calc(var(--spacing-unit) * 3);
+            background: linear-gradient(135deg, #fefdfb 0%, #faf8f5 100%);
+            border: 1px solid #f0ede8;
+            border-radius: 12px;
+            transition: box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                        transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                        border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+        }
+
+        .mudra:hover {
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+            border-color: #e8e4df;
+            transform: translateY(-2px);
+        }
+
+        .mudra-text h4 {
+            font-family: 'Lora', serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+            letter-spacing: 0.3px;
+        }
+
+        .mudra-text p {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 10px;
+        }
+
+        .mudra-text p:last-child {
+            margin-bottom: 0;
+        }
+
+        .mudra-text strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        /* ========== PRANAYAMA CARD ========== */
+        .pranayama {
+            padding: calc(var(--spacing-unit) * 3);
+            background: linear-gradient(135deg, #f0f5fb 0%, #eef2f8 100%);
+            border: 1px solid #e0e8f0;
+            border-left: 4px solid var(--accent-cool);
+            border-radius: 12px;
+            margin-bottom: calc(var(--spacing-unit) * 3);
+            transition: box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                        transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                        border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+        }
+
+        .pranayama:hover {
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+            border-color: #d8e0e8;
+            transform: translateY(-2px);
+        }
+
+        .pranayama h4 {
+            font-family: 'Lora', serif;
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 14px;
+            letter-spacing: 0.3px;
+        }
+
+        .pranayama p {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 12px;
+        }
+
+        .pranayama p:last-child {
+            margin-bottom: 0;
+        }
+
+        .pranayama strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        /* ========== ASANAS CARD ========== */
+        .asanas {
+            padding: calc(var(--spacing-unit) * 3);
+            background: linear-gradient(135deg, #fef9f3 0%, #fdf6ed 100%);
+            border: 1px solid #f0ebe4;
+            border-left: 4px solid var(--accent-warm);
+            border-radius: 12px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+        }
+
+        .asana {
+            margin-bottom: calc(var(--spacing-unit) * 3);
+            padding-bottom: calc(var(--spacing-unit) * 3);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+        }
+
+        .asana:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .asana-name {
+            font-family: 'Lora', serif;
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 6px;
+            letter-spacing: 0.2px;
+        }
+
+        .asana-english {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .asana-cue {
+            font-size: 0.9rem;
+            color: var(--text-tertiary);
+            line-height: 1.7;
+            font-style: italic;
+        }
+
+        /* ========== COLLAPSIBLE LEARN MORE ========== */
+        details {
+            margin-top: calc(var(--spacing-unit) * 4);
+            padding: calc(var(--spacing-unit) * 3);
+            background: rgba(0, 0, 0, 0.02);
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        details:hover {
+            background: rgba(0, 0, 0, 0.04);
+            border-color: rgba(0, 0, 0, 0.12);
+        }
+
+        details[open] {
+            background: rgba(0, 0, 0, 0.05);
+        }
+
+        summary {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            user-select: none;
+            outline: none;
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary::after {
+            content: '⌄';
+            font-size: 1.1rem;
+            line-height: 1;
+            color: var(--accent-warm);
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        details[open] summary::after {
+            transform: rotate(180deg);
+        }
+
+        summary:focus-visible {
+            outline: 2px solid #b08d4f;
+            outline-offset: 2px;
+        }
+
+        .learn-more-content {
+            margin-top: calc(var(--spacing-unit) * 3);
+            padding-top: calc(var(--spacing-unit) * 3);
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        details[open] .learn-more-content {
+            animation: learnMoreIn 0.32s ease;
+        }
+
+        @keyframes learnMoreIn {
+            from { opacity: 0; transform: translateY(-6px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .effect-box {
+            margin-bottom: calc(var(--spacing-unit) * 3);
+        }
+
+        .effect-box h5 {
+            font-family: 'Lora', serif;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+
+        .effect-box p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* ========== LINKS ========== */
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .asana-name a, .mudra-text h4 a {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-primary);
+            font-weight: 600;
+            cursor: pointer;
+            border-bottom: 1px solid rgba(201, 168, 120, 0.45);
+            transition: color 0.3s ease, border-color 0.3s ease;
+        }
+
+        .asana-name a::after, .mudra-text h4 a::after {
+            content: '↗';
+            font-size: 0.85em;
+            opacity: 0;
+            transform: translate(-2px, -2px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            color: var(--accent-warm);
+        }
+
+        .asana-name a:hover::after, .mudra-text h4 a:hover::after {
+            opacity: 1;
+            transform: translate(0, 0);
+        }
+
+        .asana-name a:hover, .mudra-text h4 a:hover {
+            color: var(--accent-warm);
+            border-bottom-color: var(--accent-warm);
+        }
+
+        a:focus-visible {
+            outline: 2px solid #b08d4f;
+            outline-offset: 3px;
+            border-radius: 2px;
+        }
+
+        /* ========== FOOTER ========== */
+        .footer {
+            padding: calc(var(--spacing-unit) * 8) calc(var(--spacing-unit) * 8);
+            background: linear-gradient(135deg, #f9f7f4 0%, #faf8f5 100%);
+            border-top: 1px solid #ede9e4;
+            text-align: center;
+        }
+
+        .footer p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin: 0;
+            line-height: 1.6;
+            letter-spacing: 0.3px;
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+
+            .landing-body {
+                padding: calc(var(--spacing-unit) * 7) calc(var(--spacing-unit) * 5) calc(var(--spacing-unit) * 9);
+            }
+
+            .detail {
+                padding: 0 calc(var(--spacing-unit) * 5) calc(var(--spacing-unit) * 9);
+            }
+
+            .detail-bar {
+                padding: 14px calc(var(--spacing-unit) * 5);
+                margin: 0 calc(var(--spacing-unit) * -5) calc(var(--spacing-unit) * 5);
+            }
+
+            .day-info h2 {
+                font-size: 1.8rem;
+            }
+
+            .section-title {
+                font-size: 0.78rem;
+            }
+
+            .color-dot {
+                width: 60px;
+                height: 60px;
+            }
+
+            .footer {
+                padding: calc(var(--spacing-unit) * 6) calc(var(--spacing-unit) * 5);
+            }
+        }
+
+        .sanskrit-breakdown {
+            font-size: 0.85rem;
+            color: var(--text-tertiary);
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 480px) {
+            .header {
+                padding: calc(var(--spacing-unit) * 8) calc(var(--spacing-unit) * 4);
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .header p {
+                font-size: 0.85rem;
+                letter-spacing: 2px;
+            }
+
+            .landing-body {
+                padding: calc(var(--spacing-unit) * 6) calc(var(--spacing-unit) * 4) calc(var(--spacing-unit) * 8);
+            }
+
+            .spine {
+                --disc: 46px;
+            }
+
+            .node {
+                gap: 12px;
+            }
+
+            .node__body {
+                padding: 13px 16px;
+                gap: 10px;
+            }
+
+            .node__name {
+                font-size: 1.25rem;
+            }
+
+            .node__meta {
+                font-size: 0.78rem;
+            }
+
+            .detail {
+                padding: 0 calc(var(--spacing-unit) * 4) calc(var(--spacing-unit) * 8);
+            }
+
+            .detail-bar {
+                padding: 12px calc(var(--spacing-unit) * 4);
+                margin: 0 calc(var(--spacing-unit) * -4) calc(var(--spacing-unit) * 4);
+            }
+
+            .bar-wordmark {
+                display: none;
+            }
+
+            .day-header {
+                gap: calc(var(--spacing-unit) * 2);
+            }
+
+            .day-info h2 {
+                font-size: 1.5rem;
+            }
+
+            .color-dot {
+                width: 54px;
+                height: 54px;
+            }
+
+            .footer {
+                padding: calc(var(--spacing-unit) * 4) calc(var(--spacing-unit) * 3);
+            }
+
+            .footer p {
+                font-size: 0.8rem;
+            }
+
+            details {
+                padding: calc(var(--spacing-unit) * 2);
+            }
+
+            summary {
+                font-size: 1rem;
+            }
+        }
+
+        /* ========== MOTION PREFERENCES ========== */
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+            *, *::before, *::after {
+                transition-duration: 0.01ms !important;
+                animation-duration: 0.01ms !important;
+            }
+            .mudra:hover, .pranayama:hover,
+            .node:hover .node__body, .node:hover .node__disc {
+                transform: none;
+            }
+        }
+
+        /* ========== PRINT ========== */
+        @media print {
+            .detail-bar {
+                position: static;
+            }
+            .mudra, .pranayama, .asanas {
+                box-shadow: none;
+            }
+            .day-panel {
+                break-inside: avoid;
+            }
+            details > .learn-more-content {
+                display: block !important;
+            }
+            summary::after {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <!-- ================= LANDING ================= -->
+        <div id="landing">
+            <div class="header">
+                <h1>Weekly Chakra Practice</h1>
+                <p>Pranayama • Asanas • Mudras</p>
+            </div>
+            <div class="landing-body">
+                <p class="landing__intro">Seven chakras, seven days. Choose one to explore its mudra, breathwork and asanas.</p>
+                <nav class="spine" aria-label="The seven chakras">
+                    <a class="node chakra-sahasrara" href="#sahasrara">
+                        <span class="node__disc" aria-hidden="true"></span>
+                        <span class="node__body">
+                            <span class="node__text">
+                                <span class="node__name">Sahasrara</span>
+                                <span class="node__meta">Crown · Consciousness · Sunday</span>
+                            </span>
+                            <span class="node__arrow" aria-hidden="true">→</span>
+                        </span>
+                    </a>
+                    <a class="node chakra-ajna" href="#ajna">
+                        <span class="node__disc" aria-hidden="true"></span>
+                        <span class="node__body">
+                            <span class="node__text">
+                                <span class="node__name">Ajna</span>
+                                <span class="node__meta">Third Eye · Light · Saturday</span>
+                            </span>
+                            <span class="node__arrow" aria-hidden="true">→</span>
+                        </span>
+                    </a>
+                    <a class="node chakra-vishuddha" href="#vishuddha">
+                        <span class="node__disc" aria-hidden="true"></span>
+                        <span class="node__body">
+                            <span class="node__text">
+                                <span class="node__name">Vishuddha</span>
+                                <span class="node__meta">Throat · Ether · Friday</span>
+                            </span>
+                            <span class="node__arrow" aria-hidden="true">→</span>
+                        </span>
+                    </a>
+                    <a class="node chakra-anahata" href="#anahata">
+                        <span class="node__disc" aria-hidden="true"></span>
+                        <span class="node__body">
+                            <span class="node__text">
+                                <span class="node__name">Anahata</span>
+                                <span class="node__meta">Heart · Air · Thursday</span>
+                            </span>
+                            <span class="node__arrow" aria-hidden="true">→</span>
+                        </span>
+                    </a>
+                    <a class="node chakra-manipura" href="#manipura">
+                        <span class="node__disc" aria-hidden="true"></span>
+                        <span class="node__body">
+                            <span class="node__text">
+                                <span class="node__name">Manipura</span>
+                                <span class="node__meta">Solar Plexus · Fire · Wednesday</span>
+                            </span>
+                            <span class="node__arrow" aria-hidden="true">→</span>
+                        </span>
+                    </a>
+                    <a class="node chakra-svadhisthana" href="#svadhisthana">
+                        <span class="node__disc" aria-hidden="true"></span>
+                        <span class="node__body">
+                            <span class="node__text">
+                                <span class="node__name">Svadhisthana</span>
+                                <span class="node__meta">Sacral · Water · Tuesday</span>
+                            </span>
+                            <span class="node__arrow" aria-hidden="true">→</span>
+                        </span>
+                    </a>
+                    <a class="node chakra-muladhara" href="#muladhara">
+                        <span class="node__disc" aria-hidden="true"></span>
+                        <span class="node__body">
+                            <span class="node__text">
+                                <span class="node__name">Muladhara</span>
+                                <span class="node__meta">Root · Earth · Monday</span>
+                            </span>
+                            <span class="node__arrow" aria-hidden="true">→</span>
+                        </span>
+                    </a>
+                </nav>
+            </div>
+        </div>
+
+        <!-- ================= MULADHARA ================= -->
+        <section class="detail chakra-muladhara" id="detail-muladhara">
+            <div class="detail-bar">
+                <a href="#" class="back-link"><span aria-hidden="true">←</span> All seven chakras</a>
+                <span class="bar-wordmark">Weekly Chakra Practice</span>
+            </div>
+            <div class="day-panel">
+                <div class="chakra-mandala">
+                    <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Muladhara_Mandala.svg" alt="Muladhara Mandala" width="160" height="160" loading="lazy" style="width: 160px; height: auto;"/>
+                </div>
+                <div class="day-header">
+                    <span class="color-dot" aria-hidden="true"></span>
+                    <div class="day-info">
+                        <h2>Muladhara</h2>
+                        <div class="chakra-subtitle">Mula (root) + Adhara (support)</div>
+                        <p><span class="planet">Somavara - Monday (Soma - Moon)</span></p>
+                    </div>
+                </div>
+
+                <div class="section-title">🙏 Mudra</div>
+                <div class="mudra">
+                    <div class="mudra-text">
+                        <h4><a href="https://www.google.com/search?q=Prithvi+Mudra+hand+position" target="_blank">Prithvi Mudra</a></h4>
+                        <div class="sanskrit-breakdown">Prithvi (earth)</div>
+                        <p><strong>Position:</strong> Thumb and ring finger together, other fingers extended. Do with both hands.</p>
+                        <p><strong>Feeling:</strong> Heaviness, solidity, grounding into earth.</p>
+                    </div>
+                </div>
+
+                <div class="section-title">🌬️ Pranayama</div>
+                <div class="pranayama">
+                    <h4><a href="https://www.google.com/search?q=Bhastrika+pranayama" target="_blank">Bhastrika</a></h4>
+                    <div class="sanskrit-breakdown">Bhastrika (bellows)</div>
+                    <p><strong>Technique:</strong> Rapid, forceful exhales through nose. Inhales follow naturally. 1 second per breath cycle.</p>
+                    <p><strong>Duration:</strong> 30 seconds to 1 minute. Rest after. Build gradually.</p>
+                    <p><strong>Feel:</strong> Heat rising, energy mobilizing, nervous system activation.</p>
+                </div>
+
+                <div class="section-title">🧘 Asanas</div>
+                <div class="asanas">
+                    <div class="asana">
+                        <div class="asana-name"><a href="https://www.google.com/search?q=Tadasana+mountain+pose" target="_blank">Tadasana</a></div>
+                        <div class="sanskrit-breakdown">Tada (mountain)</div>
+                        <div class="asana-english">Mountain Pose</div>
+                        <div class="asana-cue">Feet hip-width, weight even. Press four corners of feet. Lengthen spine, arms by sides.</div>
+                    </div>
+                    <div class="asana">
+                        <div class="asana-name"><a href="https://www.google.com/search?q=Uttanasana+forward+fold" target="_blank">Uttanasana</a></div>
+                        <div class="sanskrit-breakdown">Uttana (intense/stretched)</div>
+                        <div class="asana-english">Standing Forward Fold</div>
+                        <div class="asana-cue">Fold from hips. Let head hang heavy. Engage legs, soften neck.</div>
+                    </div>
+                    <div class="asana">
+                        <div class="asana-name"><a href="https://www.google.com/search?q=Malasana+garland+pose" target="_blank">Malasana</a></div>
+                        <div class="sanskrit-breakdown">Mala (garland)</div>
+                        <div class="asana-english">Garland Pose (Deep Squat)</div>
+                        <div class="asana-cue">Feet wide, heels grounded if possible. Chest forward. Fold forward.</div>
+                    </div>
+                    <div class="asana">
+                        <div class="asana-name"><a href="https://www.google.com/search?q=Vrksasana+tree+pose" target="_blank">Vrksasana</a></div>
+                        <div class="sanskrit-breakdown">Vrksa (tree)</div>
+                        <div class="asana-english">Tree Pose</div>
+                        <div class="asana-cue">One foot rooted, other pressing into inner thigh. Hands at heart or overhead. Find stillness.</div>
+                    </div>
+                </div>
+
+                <details>
+                    <summary>💡 Learn More: Body & Mind Effects</summary>
+                    <div class="learn-more-content">
+                        <div class="effect-box">
+                            <h5>Body Effects</h5>
+                            <p><strong>Prithvi Mudra:</strong> Activates the earth element through the ring finger, grounding the root plexus. Strengthens legs and feet through proprioceptive awareness.</p>
+                            <p><strong>Bhastrika:</strong> Forceful exhales activate the sympathetic nervous system's alertness. Increases metabolic heat, stimulates pelvic floor muscles, and awakens spinal stability through core engagement.</p>
+                            <p><strong>Grounding Asanas:</strong> Press the feet's four corners into the earth. Tadasana and Vrksasana build proprioceptive awareness of the base. Malasana releases tension in the deep hip stabilizers. Forward folds calm the parasympathetic nervous system.</p>
+                        </div>
+                        <div class="effect-box">
+                            <h5>Mind & Spirit Effects</h5>
+                            <p><strong>Root Chakra Shift:</strong> Muladhara correlates with the feeling of safety and belonging. Grounding practices signal the nervous system that you are supported. Stability in the body translates to stability in the mind—a foundation for all higher practices.</p>
+                            <p><strong>What You Should Feel:</strong> Heaviness in the legs, a sense of being held by the earth, reduced anxiety, increased presence. Students often report feeling "anchored" or more able to handle stress.</p>
+                        </div>
+                    </div>
+                </details>
+            </div>
+        </section>
+
+        <!-- ================= SVADHISTHANA ================= -->
+        <section class="detail chakra-svadhisthana" id="detail-svadhisthana">
+            <div class="detail-bar">
+                <a href="#" class="back-link"><span aria-hidden="true">←</span> All seven chakras</a>
+                <span class="bar-wordmark">Weekly Chakra Practice</span>
+            </div>
+            <div class="day-panel">
+                <div class="chakra-mandala">
+                    <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Swadhisthana_Mandala.svg" alt="Svadhisthana Mandala" width="160" height="160" loading="lazy" style="width: 160px; height: auto;"/>
+                </div>
+                <div class="day-header">
+                    <span class="color-dot" aria-hidden="true"></span>
+                    <div class="day-info">
+                        <h2>Svadhisthana</h2>
+                        <div class="chakra-subtitle">Sva (own) + Adhisthana (dwelling place)</div>
+                        <p><span class="planet">Mangalavara - Tuesday (Mangala - Mars)</span></p>
+                    </div>
+                </div>
+
+                <div class="section-title">🙏 Mudra</div>
+                <div class="mudra">
+                    <div class="mudra-text">
+                        <h4><a href="https://www.google.com/search?q=Varuna+Mudra+water+gesture" target="_blank">Varuna Mudra</a></h4>
+                        <div class="sanskrit-breakdown">Varuna (water)</div>
+                        <p><strong>Position:</strong> Thumb and pinky finger together, other fingers extended. Both hands.</p>
+                        <p><strong>Feeling:</strong> Flow, fluidity, emotional ease.</p>
+                    </div>
+                </div>
+
+                <div class="section-title">🌬️ Pranayama</div>
+                <div class="pranayama">
+                    <h4><a href="https://www.google.com/search?q=Ujjayi+pranayama" target="_blank">Ujjayi</a></h4>
+                    <div class="sanskrit-breakdown">Ujjayi (victorious)</div>
+                    <p><strong>Technique:</strong> Slight constriction at throat (like fogging a mirror). Audible ocean-like sound. Equal inhale and exhale.</p>
+                    <p><strong>Duration:</strong> 5-10 minutes. Sustainable and calming.</p>
+                    <p><strong>Feel:</strong> Smooth flow, gentle heat, focus turns inward.</p>
+                </div>
+
+                <div class="section-title">🧘 Asanas</div>
+                <div class="asanas">
+                    <div class="asana">
+                        <div class="asana-name"><a href="https://www.google.com/search?q=Baddha+Konasana+bound+angle" target="_blank">Baddha Konasana</a></div>
+                        <div class="sanskrit-breakdown">Baddha (bound) + Kona (angle)</div>
+                        <div class="asana-english">Bound Angle Pose</div>
+                        <div class="asana-cue">Soles of feet together. Press knees down gently. Fold forward slightly or stay upright.</div>
+                    </div>
+                    <div class="asana">
+                        <div class="asana-name"><a href="https://www.google.com/search?q=Eka+Pada+Rajakapotasana+pigeon+pose" target="_blank">Eka Pada Rajakapotasana</a></div>
+                        <div class="sanskrit-breakdown">Eka (one) + Pada (foot) + Raja (king) + Kapota (pigeon)</div>
+                        <div class="asana-english">Pigeon Pose</div>
+                        <div class="asana-cue">One leg forward bent, hip flexion. Back leg extended. Fold forward as available.</div>
+                    </div>
+                    <div class="asana">
+                        <div class="asana-name"><a href="https://www.google.com/search?q=Anjaneyasana+low+lunge" target="_blank">Anjaneyasana</a></div>
+                        <div class="sanskrit-breakdown">Anjaneya (crescent-related)</div>
+                        <div class="asana-english">Low Lunge (Crescent)</div>
+                        <div class="asana-cue">Back knee down. Front foot forward. Square hips. Reach arms up or rest on front thigh.</div>
+                    </div>
+                </div>
+
+                <details>
+                    <summary>💡 Learn More: Body & Mind Effects</summary>
+                    <div class="learn-more-content">
+                        <div class="effect-box">
+                            <h5>Body Effects</h5>
+                            <p><strong>Varuna Mudra:</strong> Activates the water element through the pinky and thumb. Increases circulation and synovial fluid in joints, supporting hip mobility and pelvic floor softening.</p>
+                            <p><strong>Ujjayi Breathing:</strong> The throat constriction (jalandhara bandha preparation) activates the parasympathetic nervous system through the vagus nerve. Sound vibrations massage the thyroid. Equal breathing regulates the nervous system's sympathetic/parasympathetic balance.</p>
+                            <p><strong>Hip Openers:</strong> These poses directly release deep hip fascia where emotional trauma is stored. Baddha Konasana and Pigeon open the tender tissues of the hip joint. As fascia releases, emotions often surface—this is the body's wisdom.</p>
+                        </div>
+                        <div class="effect-box">
+                            <h5>Mind & Spirit Effects</h5>
+                            <p><strong>Sacral Chakra Shift:</strong> Svadhisthana governs sexuality, creativity, and emotional fluidity. Opening this chakra allows blocked emotions to flow. Students often experience creative insights or emotional releases in hip openers.</p>
+                            <p><strong>What You Should Feel:</strong> Pleasure, fluidity, ease in the hips and belly. Emotional releases are normal. A sense of creative possibility and sensory aliveness.</p>
+                        </div>
+                    </div>
+                </details>
+            </div>
+        </section>
+
+        <!-- ================= MANIPURA ================= -->
+        <section class="detail chakra-manipura" id="detail-manipura">
+            <div class="detail-bar">
+                <a href="#" class="back-link"><span aria-hidden="true">←</span> All seven chakras</a>
+                <span class="bar-wordmark">Weekly Chakra Practice</span>
+            </div>
+            <div class="day-panel">
+                <div class="chakra-mandala">
+                    <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Manipura_Mandala.svg" alt="Manipura Mandala" width="160" height="160" loading="lazy" style="width: 160px; height: auto;"/>
+                </div>
+                <div class="day-header">
+                    <span class="color-dot" aria-hidden="true"></span>
+                    <div class="day-info">
+                        <h2>Manipura</h2>
+                        <div class="chakra-subtitle">Mani (gem) + Pura (city)</div>
+                        <p><span class="planet">Budhavara - Wednesday (Budha - Mercury)</span></p>
+                    </div>
+                </div>
+
+                <div class="section-title">🙏 Mudra</div>
+                <div class="mudra">
+                    <div class="mudra-text">
+                        <h4><a href="https://www.google.com/search?q=Agni+Mudra+fire+gesture" target="_blank">Agni Mudra</a></h4>
+                        <div class="sanskrit-breakdown">Agni (fire)</div>
+                        <p><strong>Position:</strong> Ring finger and thumb together, other fingers extended. Both hands.</p>
+                        <p><strong>Feeling:</strong> Heat, power, willpower activation.</p>
+                    </div>
+                </div>
+
+                <div class="section-title">🌬️ Pranayama</div>
+                <div class="pranayama">
+                    <h4><a href="https://www.google.com/search?q=Kapalabhati+pranayama" target="_blank">Kapalabhati</a></h4>
+                    <div class="sanskrit-breakdown">Kapala (skull) + Bhati (shining)</div>
+                    <p><strong>Technique:</strong> Passive inhale, active exhale through nose (via abdomen contraction). Rapid cycles.</p>
+                    <p><strong>Duration:</strong> 30 seconds to 1 minute. Rest between rounds.</p>
+                    <p><strong>Feel:</strong> Cleansing, energizing, mental clarity.</p>
+                </div>
+
+                <div class="section-title">🧘 Asanas</div>
+                <div class="asanas">
+                    <div class="asana">
+                        <div class="asana-name"><a href="https://www.google.com/search?q=Navasana+boat+pose" target="_blank">Navasana</a></div>
+                        <div class="sanskrit-breakdown">Nava (boat)</div>
+                        <div class="asana-english">Boat Pose</div>
+                        <div class="asana-cue">Sit, lift chest. Knees bent initially, shins parallel to ground. Lean back slightly.</div>
+                    </div>
+                    <div class="asana">
+                        <div class="asana-name"><a href="https://www.google.com/search?q=Phalakasana+plank+pose" target="_blank">Phalakasana</a></div>
+                        <div class="sanskrit-breakdown">Phalaka (plank/board)</div>
+                        <div class="asana-english">Plank Pose</div>
+                        <div class="asana-cue">Shoulders over wrists. Body in line. Core engaged. Press through palms.</div>
+                    </div>
+                    <div class="asana">
+                        <div class="asana-name"><a href="https://www.google.com/search?q=Chaturanga+Dandasana+four+limbed+staff" target="_blank">Chaturanga Dandasana</a></div>
+                        <div class="sanskrit-breakdown">Chatur (four) + Anga (limb) + Danda (staff)</div>
+                        <div class="asana-english">Four-Limbed Staff Pose</div>
+                        <div class="asana-cue">Lower from plank. Elbows hug ribs. Shoulders over wrists. Lower as far as comfortable.</div>
+                    </div>
+                    <div class="asana">
+                        <div class="asana-name"><a href="https://www.google.com/search?q=Parivrtta+Trikonasana+revolved+triangle" target="_blank">Parivrtta Trikonasana</a></div>
+                        <div class="sanskrit-breakdown">Parivrtta (revolved) + Trikona (triangle)</div>
+                        <div class="asana-english">Revolved Triangle Pose</div>
+                        <div class="asana-cue">Forward fold with feet hip-width. Place opposite hand to foot. Rotate chest open.</div>
+                    </div>
+                </div>
+
+                <details>
+                    <summary>💡 Learn More: Body & Mind Effects</summary>
+                    <div class="learn-more-content">
+                        <div class="effect-box">
+                            <h5>Body Effects</h5>
+                            <p><strong>Agni Mudra:</strong> Ring finger (sun) + thumb ignite metabolic fire. Activates the solar plexus and digestive agni. Increases heat and circulation through the core.</p>
+                            <p><strong>Kapalabhati:</strong> Rapid abdominal contractions massage the liver, pancreas, and spleen. Cleanses the nasal passages. The aggressive exhale stimulates the sympathetic nervous system—energizing and clarifying the mind. Boosts digestion and metabolism.</p>
+                            <p><strong>Core Engagement:</strong> Navasana, Plank, and Chaturanga build agni through muscular activation. The heat and effort generate digestive and transformative fire. These poses also strengthen the manipura's physical seat in the navel plexus.</p>
+                        </div>
+                        <div class="effect-box">
+                            <h5>Mind & Spirit Effects</h5>
+                            <p><strong>Power Center Activation:</strong> Manipura is the seat of willpower, confidence, and personal power. These practices ignite your ability to transform, act, and manifest intention. Students report increased motivation and clarity of purpose.</p>
+                            <p><strong>What You Should Feel:</strong> Heat, aliveness, confidence, mental clarity. A sense of "I can." Energy and focus returning to the center. Warmth radiating from the belly.</p>
+                        </div>
+                    </div>
+                </details>
+            </div>
+        </section>
+
+        <!-- ================= ANAHATA ================= -->
+        <section class="detail chakra-anahata" id="detail-anahata">
+            <div class="detail-bar">
+                <a href="#" class="back-link"><span aria-hidden="true">←</span> All seven chakras</a>
+                <span class="bar-wordmark">Weekly Chakra Practice</span>
+            </div>
+            <div class="day-panel">
+                <div class="chakra-mandala">
+                    <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Anahata_Mandala.svg" alt="Anahata Mandala" width="160" height="160" loading="lazy" style="width: 160px; height: auto;"/>
+                </div>
+                <div class="day-header">
+                    <span class="color-dot" aria-hidden="true"></span>
+                    <div class="day-info">
+                        <h2>Anahata</h2>
+                        <div class="chakra-subtitle">An (not) + Ahata (struck)</div>
+                        <p><span class="planet">Brihaspativara - Thursday (Brihaspati - Jupiter)</span></p>
+                    </div>
+                </div>
+
+                <div class="section-title">🙏 Mudra</div>
+                <div class="mudra">
+                    <div class="mudra-text">
+                        <h4><a href="https://www.google.com/search?q=Anahata+Mudra+heart+gesture" target="_blank">Anahata Mudra</a></h4>
+                        <div class="sanskrit-breakdown">Anahata (unstruck sound)</div>
+                        <p><strong>Position:</strong> Index and thumb touching, other three fingers extended. Hands at heart center or lap.</p>
+                        <p><strong>Feeling:</strong> Expansion, openness, compassion.</p>
+                    </div>
+                </div>
+
+                <div class="section-title">🌬️ Pranayama</div>
+                <div class="pranayama">
+                    <h4><a href="https://www.google.com/search?q=Sama+Vritti+equal+breathing" target="_blank">Sama Vritti</a></h4>
+                    <div class="sanskrit-breakdown">Sama (equal) + Vritti (breath)</div>
+                    <p><strong>Technique:</strong> Equal count inhale, equal count exhale (e.g., 4 counts each). No pause.</p>
+                    <p><strong>Duration:</strong> 5-10 minutes. Calming and centering.</p>
+                    <p><strong>Feel:</strong> Balance, integration, heart-centered calm.</p>
+                </div>
+
+                <div class="section-title">🧘 Asanas</div>
+                <div class="asanas">
+                    <div class="asana">
+                        <div class="asana-name"><a href="https://www.google.com/search?q=Bhujangasana+cobra+pose" target="_blank">Bhujangasana</a></div>
+                        <div class="sanskrit-breakdown">Bhujanga (serpent/cobra)</div>
+                        <div class="asana-english">Cobra Pose</div>
+                        <div class="asana-cue">Palms under shoulders. Chest forward and up. Shoulders back. Keep elbows close to ribs.</div>
+                    </div>
+                    <div class="asana">
+                        <div class="asana-name"><a href="https://www.google.com/search?q=Ustrasana+camel+pose" target="_blank">Ustrasana</a></div>
+                        <div class="sanskrit-breakdown">Ustra (camel)</div>
+                        <div class="asana-english">Camel Pose</div>
+                        <div class="asana-cue">Knees hip-width. Hands to heels or blocks. Chest lifts, head may drop back gently.</div>
+                    </div>
+                    <div class="asana">
+                        <div class="asana-name"><a href="https://www.google.com/search?q=Matsyasana+fish+pose" target="_blank">Matsyasana</a></div>
+                        <div class="sanskrit-breakdown">Matsya (fish)</div>
+                        <div class="asana-english">Fish Pose</div>
+                        <div class="asana-cue">Lie back on forearms. Chest opens upward. Head may rest on crown of head.</div>
+                    </div>
+                </div>
+
+                <details>
+                    <summary>💡 Learn More: Body & Mind Effects</summary>
+                    <div class="learn-more-content">
+                        <div class="effect-box">
+                            <h5>Body Effects</h5>
+                            <p><strong>Anahata Mudra:</strong> Index (air) + thumb ground the heart and lungs. Opens the bronchi and deepens the breath. The mudra position literally expands the thorax.</p>
+                            <p><strong>Sama Vritti:</strong> Equal breathing equalizes the sympathetic and parasympathetic nervous systems. The vagus nerve—which controls heart rate and emotional regulation—is toned. This is the breath of integration and coherence.</p>
+                            <p><strong>Chest Openers:</strong> Bhujangasana, Ustrasana, and Matsyasana physically stretch the pectoral muscles and fascia. They open the anterior body where we habitually collapse. As the chest opens, the nervous system recognizes safety and softens.</p>
+                        </div>
+                        <div class="effect-box">
+                            <h5>Mind & Spirit Effects</h5>
+                            <p><strong>Heart Center Awakening:</strong> Anahata is the bridge between the lower (material) and upper (spiritual) chakras. It governs love, compassion, and integration of opposites. Students often experience emotional softening and an increase in capacity for love—both for others and self.</p>
+                            <p><strong>What You Should Feel:</strong> Expansion in the chest, lightness, warmth in the heart area. Compassion. A felt sense of wholeness. Emotions may surface—grief, joy, tenderness. This is healing.</p>
+                        </div>
+                    </div>
+                </details>
+            </div>
+        </section>
+
+        <!-- ================= VISHUDDHA ================= -->
+        <section class="detail chakra-vishuddha" id="detail-vishuddha">
+            <div class="detail-bar">
+                <a href="#" class="back-link"><span aria-hidden="true">←</span> All seven chakras</a>
+                <span class="bar-wordmark">Weekly Chakra Practice</span>
+            </div>
+            <div class="day-panel">
+                <div class="chakra-mandala">
+                    <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Vishuddha_Mandala.svg" alt="Vishuddha Mandala" width="160" height="160" loading="lazy" style="width: 160px; height: auto;"/>
+                </div>
+                <div class="day-header">
+                    <span class="color-dot" aria-hidden="true"></span>
+                    <div class="day-info">
+                        <h2>Vishuddha</h2>
+                        <div class="chakra-subtitle">Vishuddhi (purification)</div>
+                        <p><span class="planet">Shukravara - Friday (Shukra - Venus)</span></p>
+                    </div>
+                </div>
+
+                <div class="section-title">🙏 Mudra</div>
+                <div class="mudra">
+                    <div class="mudra-text">
+                        <h4><a href="https://www.google.com/search?q=Vishuddha+Mudra+throat+gesture" target="_blank">Vishuddha Mudra</a></h4>
+                        <div class="sanskrit-breakdown">Vishuddha (purification)</div>
+                        <p><strong>Position:</strong> All fingers interlaced, thumbs upright and touching. Held at throat or chest.</p>
+                        <p><strong>Feeling:</strong> Clarity, expression, truth.</p>
+                    </div>
+                </div>
+
+                <div class="section-title">🌬️ Pranayama</div>
+                <div class="pranayama">
+                    <h4><a href="https://www.google.com/search?q=Ujjayi+pranayama" target="_blank">Ujjayi</a></h4>
+                    <div class="sanskrit-breakdown">Ujjayi (victorious)</div>
+                    <p><strong>Technique:</strong> Slight constriction at throat (like fogging a mirror). Audible ocean-like sound. Equal inhale and exhale. Add Jalandhara Bandha: slight chin tuck, back of neck lengthened.</p>
+                    <p><strong>Duration:</strong> 5-10 minutes.</p>
+                    <p><strong>Feel:</strong> Grounded expression, energy contained and directed.</p>
+                </div>
+
+                <div class="section-title">🧘 Asanas</div>
+                <div class="asanas">
+                    <div class="asana">
+                        <div class="asana-name"><a href="https://www.google.com/search?q=Simhasana+lion+pose" target="_blank">Simhasana</a></div>
+                        <div class="sanskrit-breakdown">Simha (lion)</div>
+                        <div class="asana-english">Lion Pose</div>
+                        <div class="asana-cue">Knees wide, sit on heels. Exhale with open mouth, extend tongue, roar or breathe audibly.</div>
+                    </div>
+                    <div class="asana">
+                        <div class="asana-name"><a href="https://www.google.com/search?q=Parivrtta+Sukhasana+revolved+twist" target="_blank">Parivrtta Sukhasana</a></div>
+                        <div class="sanskrit-breakdown">Parivrtta (revolved) + Sukha (easy)</div>
+                        <div class="asana-english">Revolved Easy Pose (Gentle Twist)</div>
+                        <div class="asana-cue">Seated cross-legged. Twist toward one side. Hand to opposite knee. Lengthen spine.</div>
+                    </div>
+                </div>
+
+                <details>
+                    <summary>💡 Learn More: Body & Mind Effects</summary>
+                    <div class="learn-more-content">
+                        <div class="effect-box">
+                            <h5>Body Effects</h5>
+                            <p><strong>Vishuddha Mudra:</strong> Interlaced fingers with upright thumbs represent the integration of the five elements at the throat. This mudra directly stimulates the thyroid and parathyroid glands—the organs of metabolism and nervous system regulation.</p>
+                            <p><strong>Ujjayi with Jalandhara Bandha:</strong> The throat lock (slight chin tuck) stimulates the vagus nerve and the carotid sinus. This reflex naturally slows the heart and deepens parasympathetic tone. The constricted throat causes air to move more slowly through the vocal cords, creating the distinctive ocean sound—which itself has a meditative, soothing effect.</p>
+                            <p><strong>Throat-Focused Asanas:</strong> Simhasana directly stretches the throat muscles and fascia. The lion's roar releases tension held in the throat and neck—places where we habitually suppress our voice. Twists massage the throat and thyroid.</p>
+                        </div>
+                        <div class="effect-box">
+                            <h5>Mind & Spirit Effects</h5>
+                            <p><strong>Voice & Truth:</strong> Vishuddha is the center of authentic expression and creative truth. When blocked, we can't speak our truth. These practices clear blockages and strengthen the capacity to communicate with clarity and integrity.</p>
+                            <p><strong>What You Should Feel:</strong> Clarity of thought. Ease in expressing yourself. A sense that your words matter. Freedom in the throat. Students often report feeling more creative and articulate after throat chakra work.</p>
+                        </div>
+                    </div>
+                </details>
+            </div>
+        </section>
+
+        <!-- ================= AJNA ================= -->
+        <section class="detail chakra-ajna" id="detail-ajna">
+            <div class="detail-bar">
+                <a href="#" class="back-link"><span aria-hidden="true">←</span> All seven chakras</a>
+                <span class="bar-wordmark">Weekly Chakra Practice</span>
+            </div>
+            <div class="day-panel">
+                <div class="chakra-mandala">
+                    <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Ajna_Mandala.svg" alt="Ajna Mandala" width="160" height="160" loading="lazy" style="width: 160px; height: auto;"/>
+                </div>
+                <div class="day-header">
+                    <span class="color-dot" aria-hidden="true"></span>
+                    <div class="day-info">
+                        <h2>Ajna</h2>
+                        <div class="chakra-subtitle">Ajna (command)</div>
+                        <p><span class="planet">Shanivara - Saturday (Shani - Saturn)</span></p>
+                    </div>
+                </div>
+
+                <div class="section-title">🙏 Mudra</div>
+                <div class="mudra">
+                    <div class="mudra-text">
+                        <h4><a href="https://www.google.com/search?q=Ajna+Mudra+third+eye+gesture" target="_blank">Ajna Mudra</a></h4>
+                        <div class="sanskrit-breakdown">Ajna (command)</div>
+                        <p><strong>Position:</strong> Index and middle finger together pointing up, other fingers folded down. Thumbs out to sides.</p>
+                        <p><strong>Feeling:</strong> Inner sight, intuition, stillness.</p>
+                    </div>
+                </div>
+
+                <div class="section-title">🌬️ Pranayama</div>
+                <div class="pranayama">
+                    <h4><a href="https://www.google.com/search?q=Trataka+gazing+meditation" target="_blank">Trataka</a></h4>
+                    <div class="sanskrit-breakdown">Trataka (gazing)</div>
+                    <p><strong>Technique:</strong> Gaze steadily at candle flame or point. 2-5 minutes. Develops focus and inner vision.</p>
+                    <p><strong>Alternative:</strong> <a href="https://www.google.com/search?q=Nadi+Shodhana+alternate+nostril" target="_blank">Nadi Shodhana</a> (Nadi = channel, Shodhana = purification). Alternate nostril breathing. Equalizes left/right energy. Clarifying.</p>
+                    <p><strong>Feel:</strong> Clarity, intuition, mental quietude.</p>
+                </div>
+
+                <div class="section-title">🧘 Asanas</div>
+                <div class="asanas">
+                    <div class="asana">
+                        <div class="asana-name"><a href="https://www.google.com/search?q=Paschimottanasana+seated+forward+fold" target="_blank">Paschimottanasana</a></div>
+                        <div class="sanskrit-breakdown">Paschima (west) + Uttana (intense)</div>
+                        <div class="asana-english">Seated Forward Fold</div>
+                        <div class="asana-cue">Legs extended. Fold from hips. Let head hang. Breathe into the fold.</div>
+                    </div>
+                    <div class="asana">
+                        <div class="asana-name"><a href="https://www.google.com/search?q=Balasana+child's+pose" target="_blank">Balasana</a></div>
+                        <div class="sanskrit-breakdown">Bala (child)</div>
+                        <div class="asana-english">Child's Pose</div>
+                        <div class="asana-cue">Knees wide, big toes touching. Sink hips to heels. Forehead down. Arms forward or alongside.</div>
+                    </div>
+                    <div class="asana">
+                        <div class="asana-name"><a href="https://www.google.com/search?q=Sukhasana+easy+pose" target="_blank">Sukhasana</a></div>
+                        <div class="sanskrit-breakdown">Sukha (easy)</div>
+                        <div class="asana-english">Easy Pose (Simple Cross-Legged)</div>
+                        <div class="asana-cue">Seated cross-legged. Sit upright. Hands on knees. Ground sitting bones.</div>
+                    </div>
+                </div>
+
+                <details>
+                    <summary>💡 Learn More: Body & Mind Effects</summary>
+                    <div class="learn-more-content">
+                        <div class="effect-box">
+                            <h5>Body Effects</h5>
+                            <p><strong>Ajna Mudra:</strong> Index (air) + middle finger (ether/space) activate the pineal gland area. This mudra stimulates the prefrontal cortex—the command center of the brain responsible for focus, intuition, and higher cognition.</p>
+                            <p><strong>Trataka (Candle Gazing):</strong> Softly gazing at a single point strengthens the eye muscles and the retina. More importantly, it trains the mind to focus without distraction. The eyes and the third eye are intimately connected in subtle anatomy.</p>
+                            <p><strong>Nadi Shodhana:</strong> Alternate nostril breathing balances the left and right hemispheres of the brain. The left nostril corresponds to the right hemisphere (intuition, wholeness); the right nostril to the left (logic, analysis). Balancing them integrates the mind.</p>
+                            <p><strong>Inward-Gazing Asanas:</strong> Forward folds and child's pose naturally turn the gaze and attention inward. The forehead touching (or near) the earth is symbolic of surrendering the ego to wisdom.</p>
+                        </div>
+                        <div class="effect-box">
+                            <h5>Mind & Spirit Effects</h5>
+                            <p><strong>Third Eye Opening:</strong> Ajna is the center of intuition, inner vision, and the command center of consciousness. When open, you access intuitive knowing—wisdom that transcends logical thought. You see through illusions and understand the deeper patterns of existence.</p>
+                            <p><strong>What You Should Feel:</strong> Mental clarity and calmness. Intuitive insights arising. A sense of "seeing" beyond the physical. Some students report visual phenomena during treatment—this is normal. A quieting of the mind's chatter. Deep peace.</p>
+                        </div>
+                    </div>
+                </details>
+            </div>
+        </section>
+
+        <!-- ================= SAHASRARA ================= -->
+        <section class="detail chakra-sahasrara" id="detail-sahasrara">
+            <div class="detail-bar">
+                <a href="#" class="back-link"><span aria-hidden="true">←</span> All seven chakras</a>
+                <span class="bar-wordmark">Weekly Chakra Practice</span>
+            </div>
+            <div class="day-panel">
+                <div class="chakra-mandala">
+                    <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Sahasrara_Mandala.svg" alt="Sahasrara Mandala" width="160" height="160" loading="lazy" style="width: 160px; height: auto;"/>
+                </div>
+                <div class="day-header">
+                    <span class="color-dot" aria-hidden="true"></span>
+                    <div class="day-info">
+                        <h2>Sahasrara</h2>
+                        <div class="chakra-subtitle">Sahasra (thousand) + Ara (petal)</div>
+                        <p><span class="planet">Ravivara - Sunday (Ravi - Sun)</span></p>
+                    </div>
+                </div>
+
+                <div class="section-title">🙏 Mudra</div>
+                <div class="mudra">
+                    <div class="mudra-text">
+                        <h4><a href="https://www.google.com/search?q=Sahasrara+Mudra+crown+gesture" target="_blank">Sahasrara Mudra</a></h4>
+                        <div class="sanskrit-breakdown">Sahasrara (thousand-petaled)</div>
+                        <p><strong>Position:</strong> All fingers interlaced, index fingers extended upward touching. Held at crown or above head.</p>
+                        <p><strong>Feeling:</strong> Expansion, unity, transcendence.</p>
+                    </div>
+                </div>
+
+                <div class="section-title">🌬️ Pranayama</div>
+                <div class="pranayama">
+                    <h4><a href="https://www.google.com/search?q=Dirga+Pranayama+three+part+breath" target="_blank">Dirga Pranayama</a></h4>
+                    <div class="sanskrit-breakdown">Dirga (long/full)</div>
+                    <p><strong>Technique:</strong> Inhale filling belly → ribcage → chest. Exhale in reverse. Integrates entire breath body.</p>
+                    <p><strong>Alternative:</strong> Silent meditation. Sit. Release technique. Witness breath naturally. 10-20 minutes.</p>
+                    <p><strong>Feel:</strong> Wholeness, peace, dissolution of boundaries.</p>
+                </div>
+
+                <div class="section-title">🧘 Asanas</div>
+                <div class="asanas">
+                    <div class="asana">
+                        <div class="asana-name"><a href="https://www.google.com/search?q=Sirsasana+headstand" target="_blank">Sirsasana</a></div>
+                        <div class="sanskrit-breakdown">Sirsa (head)</div>
+                        <div class="asana-english">Headstand</div>
+                        <div class="asana-cue">Crown of head on ground, forearms parallel, elbows shoulder-width. Legs up. Work toward this gradually.</div>
+                    </div>
+                    <div class="asana">
+                        <div class="asana-name"><a href="https://www.google.com/search?q=Adho+Mukha+Svanasana+downward+dog" target="_blank">Adho Mukha Svanasana</a></div>
+                        <div class="sanskrit-breakdown">Adho (downward) + Mukha (face) + Svana (dog)</div>
+                        <div class="asana-english">Downward-Facing Dog</div>
+                        <div class="asana-cue">Hands shoulder-width, feet hip-width. Hips high, head between arms. Press firmly through palms.</div>
+                    </div>
+                    <div class="asana">
+                        <div class="asana-name"><a href="https://www.google.com/search?q=Padmasana+lotus+pose" target="_blank">Padmasana</a></div>
+                        <div class="sanskrit-breakdown">Padma (lotus)</div>
+                        <div class="asana-english">Lotus Pose</div>
+                        <div class="asana-cue">Seated, fold one leg then the other into lotus (or half-lotus). Spine tall. Hands in mudra.</div>
+                    </div>
+                </div>
+
+                <details>
+                    <summary>💡 Learn More: Body & Mind Effects</summary>
+                    <div class="learn-more-content">
+                        <div class="effect-box">
+                            <h5>Body Effects</h5>
+                            <p><strong>Sahasrara Mudra:</strong> All fingers interlaced with index fingers pointing up represent the unity of all elements. This mudra activates the pituitary and pineal glands—the master endocrine centers that regulate all other glands and thus the entire body.</p>
+                            <p><strong>Dirga Pranayama:</strong> Three-part breathing integrates the entire respiratory system. As you fill the belly, ribs, and chest, you activate all parts of the nervous system—parasympathetic (belly), sympathetic/balanced (ribs), and higher consciousness (chest/heart).</p>
+                            <p><strong>Crown Asanas:</strong> Inversions like Headstand and Downward Dog reverse the usual orientation of the body, sending fresh blood to the brain and reversing our habitual relationship to gravity. This physical inversion mirrors the spiritual inversion of consciousness—flipping perspective from ego to unity. Lotus Pose is the traditional seat of meditation, aligning the spine for kundalini flow.</p>
+                        </div>
+                        <div class="effect-box">
+                            <h5>Mind & Spirit Effects</h5>
+                            <p><strong>Crown Chakra Awakening:</strong> Sahasrara is not a chakra in the traditional sense—it is the seat of pure consciousness, unity, and enlightenment. When awakened, you experience yourself as boundless, as part of all existence. The ego dissolves. You realize there is no separation between self and other, between individual and universal consciousness.</p>
+                            <p><strong>What You Should Feel:</strong> Profound peace and stillness. A sense of vastness and spaciousness. Unity with all beings. The dissolution of the sense of separate self. Bliss (ananda). Some students experience this as overwhelming, and that is normal—the nervous system is learning to hold a new frequency. Sahasrara work is the ultimate integration of all six lower chakras into the infinite.</p>
+                        </div>
+                    </div>
+                </details>
+            </div>
+        </section>
+
+        <div class="footer">
+            <p>Professional yoga teaching guide • Chakra system integrated with pranayama, asanas & mudras</p>
+            <p style="font-size: 0.8rem; color: var(--text-tertiary); margin-top: 8px;">Chakra mandalas sourced from Wikimedia Commons • Sanskrit study framework</p>
+        </div>
+    </div>
+
+    <script>
+        (function () {
+            var chakras = ['muladhara', 'svadhisthana', 'manipura', 'anahata', 'vishuddha', 'ajna', 'sahasrara'];
+            var landing = document.getElementById('landing');
+            var detailEls = document.querySelectorAll('.detail');
+
+            function render() {
+                var id = (location.hash || '').replace('#', '');
+                var isDetail = chakras.indexOf(id) !== -1;
+
+                landing.style.display = isDetail ? 'none' : '';
+                for (var i = 0; i < detailEls.length; i++) {
+                    detailEls[i].style.display = (detailEls[i].id === 'detail-' + id) ? 'block' : 'none';
+                }
+                window.scrollTo(0, 0);
+            }
+
+            window.addEventListener('hashchange', render);
+            render();
+        })();
+    </script>
+</body>
+</html>
